@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 @RequestMapping("/api/v1")
 @RestController
 @RequiredArgsConstructor
@@ -25,11 +27,18 @@ public class ProductController {
     private final Map<String, AbstractCommonProcessor> processorMap;
 
     @PostMapping("/product")
-    public String processProduct(@RequestBody ProductDto productDto) {
+    public String processProduct(@RequestBody ProductDto productDto) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(10);
         return processorMap.get(ProductType.getBeanName(productDto.getType()))
                 .doCreateProject(productDto);
     }
 
+
+    @GetMapping("/products")
+    public String processProduct() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(10);
+        return "ewrw";
+    }
 
     /**
      * excel 无内存溢出

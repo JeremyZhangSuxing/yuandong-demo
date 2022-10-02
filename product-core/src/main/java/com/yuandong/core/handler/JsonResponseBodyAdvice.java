@@ -18,10 +18,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @author suxing.zhang
  **/
 @Slf4j
-@ControllerAdvice
-@RequiredArgsConstructor
+//@ControllerAdvice
+//@RequiredArgsConstructor
 public class JsonResponseBodyAdvice implements ResponseBodyAdvice<Object> {
-    private final ObjectMapper objectMapper;
+    private  ObjectMapper objectMapper;
 
     @Override
     public boolean supports(@Nullable MethodParameter returnType, @Nullable Class<? extends HttpMessageConverter<?>> converterType) {
